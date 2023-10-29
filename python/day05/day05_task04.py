@@ -1,13 +1,8 @@
-import random
-
-def divrandom(a, b, s, p):
-  m, M = min(a, b), max(a, b)
-  i = m
-  while i % p == 0 and i <= M:
-    i += s
-  if i % p == 0:
-    return 0
-  i = 0
-  while i % p == 0:
-    i = random.randrange(m, M + 1, s)
-  return i
+from decimal import Decimal 
+import decimal
+decimal.getcontext().prec = 300
+x1, y1, x2, y2, x3, y3 = [Decimal(item) for item in input().split(',')]
+x13, y13 = x1 - x3, y1 - y3
+x23, y23 = x2 - x3, y2 - y3
+S = abs(x13 * y23 / 2 - x23 * y13 / 2)
+print(S)
